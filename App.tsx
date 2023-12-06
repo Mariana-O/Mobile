@@ -1,20 +1,32 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text,  ScrollView, SafeAreaView } from 'react-native';
+import Card from './src/components/card/Card';
+import InputData from './src/components/inputData/InputData';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar style='auto'/>
+      <Text />
+        <ScrollView>
+        <Card/>
+        <Card/>
+        <Card/>
+       < InputData/>
+       
+
+      </ScrollView>
+    </SafeAreaView>
+   
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    display: 'flex',
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#1515',
+     padding: 20
   },
 });
