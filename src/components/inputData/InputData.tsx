@@ -6,9 +6,10 @@ export default function InputData(){
     const [inputValue, setInputValue] = useState('');
     return(
         <View>
-            <Text>  Esse é um teste de Input </Text>
-            <TextInput value={inputValue} onChangeText={ text => setInputValue(text)} style = {styles.setText}></TextInput>
-            <Text>{inputValue}</Text>
+          <Text style={styles.text}>  Digite: </Text>
+            <TextInput value={inputValue} onChangeText={ text => setInputValue(text)} style = {styles.setText}>
+            </TextInput>
+          <Text>{inputValue}</Text>
         </View>
     );
 }
