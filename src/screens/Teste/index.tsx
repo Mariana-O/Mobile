@@ -1,12 +1,13 @@
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
+
 export default function Teste(){
     const { navigate } = useNavigation<NavigationProp<any>>();
     return(
         <View>
           <Text>Olá, eu sou uma tela teste</Text>
-          <TouchableOpacity onPress={() => navigate('Testedois')} style={styles.btnText}><Text>proxima tela</Text></TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate('Home')} style={styles.btnText}><Text>Home</Text></TouchableOpacity>
         </View>
     )
 }

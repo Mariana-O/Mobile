@@ -1,12 +1,13 @@
+import 'react-native-gesture-handler'
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, View, ScrollView,} from 'react-native';
 import  Card  from '../../components/card/Card';
-import InputData from '../../components/inputData/InputData';
-import Btn from '../../components/btn/Btn';
+import Header from '../../components/header/Header';
 import { useNavigation, NavigationProp} from '@react-navigation/native'
-import { FlatList, ScrollView,  } from 'react-native-gesture-handler';
 import { useEffect, useState } from 'react';
 import { getAllPokemon } from '../../controllers/pokemonControllers';
+import Bullets from '../../components/bullets/Bullets';
+import Carrossel from '../../components/carrossel/Carrossel';
 
 export default function Home(){
 const { navigate } = useNavigation<NavigationProp<any>>();
@@ -15,18 +16,20 @@ const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
 useEffect(() =>{
   getAllPokemon().then(setPokemons).catch((err) => console.log(err));
-})
+});
 
 return (
   <ScrollView>
   <View style ={styles.container}>
+    <Header />
+    <ScrollView horizontal={true}>
+     <Bullets/>
+    </ScrollView>
+    <View style={styles.scrollNoHeader}>
     <StatusBar style='dark'/>
-    <Text>Mariana Camargo</Text>
-
-    <TouchableOpacity onPress={() => navigate('Teste')} style={styles.btnText}>
-      <Text>go to teste Screen</Text>
-    </TouchableOpacity>
-    <Card data={pokemons}/>
+    <Carrossel data={pokemons}/>
+    {/* <Card data={pokemons}/> */}
+    </View>
   </View>
   </ScrollView>
    
@@ -35,18 +38,19 @@ return (
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
     flex: 1,
-    backgroundColor: '#1515',
-     padding: 20
+    backgroundColor: '#FAF1E4',
   },
   btnText: {
-    backgroundColor: '#fffff',
+    backgroundColor: 'grey',
     height: 80,
     borderRadius:50,
     alignItems: 'center',
     margin:50,
     elevation:5,
     justifyContent: "center"
+},
+scrollNoHeader: {
+  padding: 20,
 },
 });

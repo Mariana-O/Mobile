@@ -1,42 +1,34 @@
-import {StyleSheet, Text, View,} from 'react-native';
-import { TouchableOpacityProps } from 'react-native-gesture-handler';
- 
+import React from "react";
+import { StyleSheet, Text, View, TouchableOpacityProps } from "react-native";
+
 type Props = {
   data: Pokemon[];
-} & TouchableOpacityProps
+} & TouchableOpacityProps;
 
-export default function Card({data, ...rest} : Props){
-    return(
-      <View>
-        {data.map((item) => {
-          return(
-
+export default function Card({ data, ...rest }: Props) {
+  return (
     <View>
-    <Text>{item.name}</Text>
+      {data.map((item) => {
+        return (
+          <View style={styles.card}>
+            <Text>{item.name}</Text>
+          </View>
+        )
+      })}
     </View>
-    )
-   })};
-   </View>
-  )}
-   
-   
+  );
+}
 
-const style = StyleSheet.create({
-    card: {
-    display: 'flex',
-    flexWrap:"wrap",
-    flexDirection:"row",
+const styles = StyleSheet.create({
+  card: {
     padding: 5,
-    justifyContent: 'space-between',
+    backgroundColor: '#1515',
+    color: 'black',
+    borderRadius: 25,
+    margin: 10,
     alignItems: 'center',
-    backgroundColor: '#1515'
+    marginBottom: 25,
+    paddingVertical: 80,
+  },
 
-    },
-    textStyle: {
-      borderRadius: 5,
-      backgroundColor: '#333',
-      fontSize: 25,
-      color: '#ffff',
-    },
-})
-
+});
